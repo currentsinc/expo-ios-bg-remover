@@ -1,9 +1,6 @@
 {
-  "platforms": ["ios", "tvos", "android", "web"],
+  "platforms": ["ios"],
   "ios": {
-    "modules": ["ExpoSettingsModule"]
-  },
-  "android": {
-    "modules": ["expo.modules.settings.ExpoSettingsModule"]
+    "modules": ["BgRemoverModule"]
   }
 }

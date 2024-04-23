@@ -3,16 +3,16 @@ require 'json'
 package = JSON.parse(File.read(File.join(__dir__, '..', 'package.json')))
 
 Pod::Spec.new do |s|
-  s.name           = 'ExpoSettings'
+  s.name           = 'BgRemover'
   s.version        = package['version']
   s.summary        = package['description']
   s.description    = package['description']
   s.license        = package['license']
   s.author         = package['author']
   s.homepage       = package['homepage']
-  s.platforms      = { :ios => '13.4', :tvos => '13.4' }
+  s.platforms      = { :ios => '13.4' }
   s.swift_version  = '5.4'
-  s.source         = { git: 'https://github.com/csmithxc/expo-settings' }
+  s.source         = { git: 'https://github.com/Currents/expo-ios-bg-remover' }
   s.static_framework = true
 
   s.dependency 'ExpoModulesCore'

@@ -1,26 +1,21 @@
-import { NativeModulesProxy, EventEmitter, Subscription } from 'expo-modules-core';
+import { UnavailabilityError } from "expo-modules-core";
 
-// Import the native module. On web, it will be resolved to ExpoSettings.web.ts
-// and on native platforms to ExpoSettings.ts
-import ExpoSettingsModule from './ExpoSettingsModule';
-import ExpoSettingsView from './ExpoSettingsView';
-import { ChangeEventPayload, ExpoSettingsViewProps } from './ExpoSettings.types';
+import BgRemoverModule from "./BgRemoverModule";
 
-// Get the native constant value.
-export const PI = ExpoSettingsModule.PI;
+export async function getSubjectAsync(
+  url: string,
+  pointX: number = 0.5,
+  pointY: number = 0.5,
+  cropToExtent: boolean = false,
+): Promise<any> {
+  if (!BgRemoverModule.getSubjectAsync) {
+    throw new UnavailabilityError("BgRemover", "getSubjectAsync");
+  }
 
-export function hello(): string {
-  return ExpoSettingsModule.hello();
+  return await BgRemoverModule.getSubjectAsync(
+    url,
+    pointX,
+    pointY,
+    cropToExtent,
+  );
 }
-
-export async function setValueAsync(value: string) {
-  return await ExpoSettingsModule.setValueAsync(value);
-}
-
-const emitter = new EventEmitter(ExpoSettingsModule ?? NativeModulesProxy.ExpoSettings);
-
-export function addChangeListener(listener: (event: ChangeEventPayload) => void): Subscription {
-  return emitter.addListener<ChangeEventPayload>('onChange', listener);
-}
-
-export { ExpoSettingsView, ExpoSettingsViewProps, ChangeEventPayload };
