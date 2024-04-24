@@ -1,7 +1,7 @@
 {
   "name": "expo-ios-bg-remover",
   "version": "0.1.1",
-  "description": "A simple module to remove the background from an image using the iOS 17 Vision API",
+  "description": "A simple Expo module to remove the background from an image using the iOS 17 Vision API",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
